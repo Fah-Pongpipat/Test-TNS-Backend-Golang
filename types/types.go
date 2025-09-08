@@ -3,7 +3,12 @@ package types
 // Department struct
 type Department struct {
 	DepartmentID   int    `gorm:"primaryKey;autoIncrement" json:"department_id,omitempty"` // PK
-	DepartmentName string `json:"department_name"`                                         // ชื่อแผนก
+	DepartmentName string `json:"department_name"`
+}
+
+// บังคับให้ GORM ใช้ชื่อ table = department (ไม่เติม s)
+func (Department) TableName() string {
+	return "department"
 }
 
 // User struct
